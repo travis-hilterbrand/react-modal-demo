@@ -15,7 +15,9 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
+//Modal.setAppElement('')
+Modal.defaultStyles.overlay.backgroundColor = '#1E212D';
+Modal.defaultStyles.overlay.opacity = 0.5;
 
 function App() {
   var subtitle;
@@ -37,11 +39,13 @@ function App() {
     <div id={'App'}>
       <button onClick={openModal}>Open Modal</button>
       <Modal
+        contentLabel="Example Modal"
+        shouldCloseOnOverlayClick={false}
+        shouldCloseOnEsc={false}
+        style={customStyles}
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
       >
 
         <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
